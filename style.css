@@ -1,0 +1,113 @@
+/* ============================================================
+   CKH Student Portal - Combined Stylesheet
+   Login Page + Dashboard Styles
+   ============================================================ */
+
+/* == Login Page Styles == */
+
+.minimal-card {
+  background: #FFFFFF;
+  border: 1px solid #D9D3C7;
+  box-shadow: 0 4px 24px -2px rgba(47, 58, 68, 0.06);
+}
+
+.input-container {
+  border: 1px solid #D9D3C7;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-container:focus-within {
+  border-color: #2F3A44;
+  box-shadow: 0 0 0 3px rgba(47, 58, 68, 0.08);
+}
+
+.input-container.valid {
+  border-color: #708090;
+  background-color: #FFFFFF;
+}
+
+.input-container.error {
+  border-color: #E05252;
+}
+
+.captcha-box {
+  background: #FFFFFF;
+  border: 1px solid #D9D3C7;
+  border-radius: 0.875rem;
+}
+
+.rotate-btn:active svg {
+  transform: rotate(180deg);
+}
+
+svg {
+  transition: transform 0.25s ease;
+}
+
+/* == Dashboard Styles == */
+
+.minimal-subcard {
+  background: #FAFAFA;
+  border: 1px solid #D9D3C7;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f2f2f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D9D3C7;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #AAB2BD;
+}
+
+/* == Payment Success Check Badge Animations == */
+
+@keyframes badgePopScale {
+  0%   { transform: scale(0.5); opacity: 0; }
+  60%  { transform: scale(1.12); opacity: 1; }
+  80%  { transform: scale(0.96); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes tickStrokeDraw {
+  0%   { stroke-dashoffset: 24; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes badgeGlowPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(217, 211, 199, 0.7); }
+  70%  { box-shadow: 0 0 0 16px rgba(217, 211, 199, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(217, 211, 199, 0); }
+}
+
+.check-badge-pop {
+  animation: badgePopScale 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) both, badgeGlowPulse 1.4s ease-out 0.2s 1;
+}
+
+.check-tick-draw {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: tickStrokeDraw 0.5s cubic-bezier(0.65, 0, 0.35, 1) 0.3s forwards;
+}
+
+/* == Print Styles == */
+
+@media print {
+  body * { visibility: hidden; }
+  #printable-receipt-card, #printable-receipt-card * { visibility: visible; }
+  #printable-receipt-card {
+    position: absolute; left: 0; top: 0; width: 100%;
+    margin: 0; padding: 20px;
+    background: white !important; color: black !important;
+    box-shadow: none !important; border: none !important;
+  }
+}
